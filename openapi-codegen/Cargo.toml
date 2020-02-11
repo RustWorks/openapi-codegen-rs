@@ -1,6 +1,6 @@
 [package]
 name = "openapi-codegen"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Morley, Jonathan <morley.jonathan@gmail.com>"]
 edition = "2018"
 description = "Automatically generate rust HTTP clients from OpenAPI files."

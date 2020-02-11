@@ -166,7 +166,8 @@ impl Request {
             req = req.header("Content-Type", "application/json").body(body);
         }
 
-        req.send()?.error_for_status().map_err(|e| e.into())
+        // req.send()?.error_for_status().map_err(|e| e.into())
+        Ok(req.send()?)
     }
 
     pub fn execute<'a, U>(self, conf: &configuration::Configuration) -> Result<U, failure::Error>
