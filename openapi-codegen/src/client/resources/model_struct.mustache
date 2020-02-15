@@ -41,6 +41,11 @@ impl r#{{pascal_id}} {
         self
     }
 
+    pub fn with_option_{{snake_id}}(mut self, r#{{snake_id}}: Option<{{type}}>) -> Self {
+        self.r#{{snake_id}} = r#{{snake_id}};
+        self
+    }
+
     pub fn r#{{snake_id}}(&self) -> Option<{{borrowed_type}}> {
         self.r#{{snake_id}}.as_ref().map(|x| x.borrow())
     }

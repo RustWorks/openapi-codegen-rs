@@ -33,6 +33,11 @@ impl r#Repository {
         self
     }
 
+    pub fn with_option_owner(mut self, r#owner: Option<User>) -> Self {
+        self.r#owner = r#owner;
+        self
+    }
+
     pub fn r#owner(&self) -> Option<&User> {
         self.r#owner.as_ref().map(|x| x.borrow())
     }
@@ -47,6 +52,11 @@ impl r#Repository {
 
     pub fn with_slug(mut self, r#slug: String) -> Self {
         self.r#slug = Some(r#slug);
+        self
+    }
+
+    pub fn with_option_slug(mut self, r#slug: Option<String>) -> Self {
+        self.r#slug = r#slug;
         self
     }
 
