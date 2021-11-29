@@ -39,6 +39,11 @@ impl r#Pullrequest {
         self
     }
 
+    pub fn with_option_author(mut self, r#author: Option<User>) -> Self {
+        self.r#author = r#author;
+        self
+    }
+
     pub fn r#author(&self) -> Option<&User> {
         self.r#author.as_ref().map(|x| x.borrow())
     }
@@ -53,6 +58,11 @@ impl r#Pullrequest {
 
     pub fn with_id(mut self, r#id: i32) -> Self {
         self.r#id = Some(r#id);
+        self
+    }
+
+    pub fn with_option_id(mut self, r#id: Option<i32>) -> Self {
+        self.r#id = r#id;
         self
     }
 
@@ -73,6 +83,11 @@ impl r#Pullrequest {
         self
     }
 
+    pub fn with_option_repository(mut self, r#repository: Option<Repository>) -> Self {
+        self.r#repository = r#repository;
+        self
+    }
+
     pub fn r#repository(&self) -> Option<&Repository> {
         self.r#repository.as_ref().map(|x| x.borrow())
     }
@@ -87,6 +102,11 @@ impl r#Pullrequest {
 
     pub fn with_title(mut self, r#title: String) -> Self {
         self.r#title = Some(r#title);
+        self
+    }
+
+    pub fn with_option_title(mut self, r#title: Option<String>) -> Self {
+        self.r#title = r#title;
         self
     }
 

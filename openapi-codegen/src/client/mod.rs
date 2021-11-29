@@ -50,7 +50,8 @@ pub fn client(api_path: &str, output_dir: &str, tests: bool) -> Result<(), Error
     let mut request = File::create(&dest_path.join("apis/request.rs"))?;
     request.write_all(include_bytes!("resources/request.rs"))?;
 
-    let apis = spec_apis(&spec, tests);
+    let mut apis = spec_apis(&spec, tests);
+    apis.sort_by_cached_key(|ref k| k.snake_id.0.to_string());
 
     let api_mod = File::create(&dest_path.join("apis/mod.rs"))?;
     reg.render_to_write("api_mod", &apis, api_mod)?;

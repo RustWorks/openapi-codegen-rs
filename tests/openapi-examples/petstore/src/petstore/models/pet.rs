@@ -38,6 +38,11 @@ impl r#Pet {
         self
     }
 
+    pub fn with_option_tag(mut self, r#tag: Option<String>) -> Self {
+        self.r#tag = r#tag;
+        self
+    }
+
     pub fn r#tag(&self) -> Option<&str> {
         self.r#tag.as_ref().map(|x| x.borrow())
     }

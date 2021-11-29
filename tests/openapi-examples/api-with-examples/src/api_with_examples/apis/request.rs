@@ -166,7 +166,17 @@ impl Request {
             req = req.header("Content-Type", "application/json").body(body);
         }
 
-        req.send()?.error_for_status().map_err(|e| e.into())
+        // req.send()?.error_for_status().map_err(|e| e.into())
+
+        let mut data = req.send()?;
+        if data.status().is_client_error() || data.status().is_server_error() {
+            match data.text() {
+                Ok(t) => Err(failure::format_err!("{}", t)),
+                Err(_) => data.error_for_status().map_err(|e| e.into()),
+            }
+        } else {
+            Ok(data)
+        }
     }
 
     pub fn execute<'a, U>(self, conf: &configuration::Configuration) -> Result<U, failure::Error>

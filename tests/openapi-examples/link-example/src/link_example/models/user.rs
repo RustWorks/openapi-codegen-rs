@@ -33,6 +33,11 @@ impl r#User {
         self
     }
 
+    pub fn with_option_username(mut self, r#username: Option<String>) -> Self {
+        self.r#username = r#username;
+        self
+    }
+
     pub fn r#username(&self) -> Option<&str> {
         self.r#username.as_ref().map(|x| x.borrow())
     }
@@ -47,6 +52,11 @@ impl r#User {
 
     pub fn with_uuid(mut self, r#uuid: String) -> Self {
         self.r#uuid = Some(r#uuid);
+        self
+    }
+
+    pub fn with_option_uuid(mut self, r#uuid: Option<String>) -> Self {
+        self.r#uuid = r#uuid;
         self
     }
 
